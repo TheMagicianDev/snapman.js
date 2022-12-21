@@ -1,6 +1,6 @@
 # snapman
 
-![snapmanJs_banner](./imgs/snapman_banner.jpg)
+![snapman.js banner](./imgs/snapman_banner.jpg)
 
 <div align="center">
   <a href="https://www.npmjs.org/package/snapman">
@@ -36,6 +36,8 @@ npm install snapman
 pnpm add snapman
 pnpm add snapman
 ```
+
+For usage with browser you can use bundlers like webpack or vite or rollup. Otherwise you can use the following [umd file]()
 
 ## Usage
 
