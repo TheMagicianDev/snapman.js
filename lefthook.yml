@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint-src:
+      glob: 'src/**/*.ts'
+      run: npm run lint
+    lint-all:
+      glob: '{.eslintrc.cjs, .prettierrc.json, lefthook.yml, package.json}'
+      run: npm run lint
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: npx commitlint --edit

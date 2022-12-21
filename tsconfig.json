@@ -1,0 +1,11 @@
+{
+  "extends": "@themagician/tsconfig-base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "/*": ["./src/*"]
+    }
+  },
+  "include": ["./src/"],
+  "exclude": ["**/*.test.{js,ts}"]
+}
