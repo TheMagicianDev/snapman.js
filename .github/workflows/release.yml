@@ -5,10 +5,6 @@ on:
     tags:
       - "v*.*.*"
 
-env:
-  FORCE_COLOR: 2
-  NODE_COV: 16 # The Node.js version to run coveralls on
-
 permissions:
   contents: read
 
@@ -16,7 +12,7 @@ jobs:
   run:
     permissions:
       contents: read # for actions/checkout to fetch code
-    name: Node ${{ matrix.node }}
+    name: Release ${{ github.ref }}
     runs-on: ubuntu-latest
 
     steps:
