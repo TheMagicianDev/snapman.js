@@ -6,11 +6,11 @@
   <a href="https://www.npmjs.org/package/snapman">
     <img src="https://img.shields.io/npm/v/snapman.svg?style=flat-square" alt="npm version"/>
   </a>
-  <a href="https://github.com/TheMagicianDev/snapman.js/actions?query=workflow%3ACI+branch%3Amaster">
-    <img src="https://img.shields.io/github/actions/workflow/status/TheMagicianDev/snapman.js/ci.yml?branch=master" alt="Build Status">
+  <a href="https://github.com/TheMagicianDev/snapman.js/actions?query=workflow%3ACI+branch%3Amain">
+    <img src="https://img.shields.io/github/actions/workflow/status/TheMagicianDev/snapman.js/ci.yml?branch=main" alt="Build Status">
   </a>
-  <a href='https://coveralls.io/github/TheMagicianDev/snapman.js?branch=master'>
-    <img src='https://coveralls.io/repos/github/TheMagicianDev/snapman.js/badge.svg?branch=master' alt='Coverage Status' />
+  <a href='https://coveralls.io/github/TheMagicianDev/snapman.js?branch=main'>
+    <img src='https://coveralls.io/repos/github/TheMagicianDev/snapman.js/badge.svg?branch=main' alt='Coverage Status' />
   </a>
   <a href='LICENSE'>
     <img src='https://img.shields.io/badge/license-MIT-blue.svg?style=flat' alt='Coverage Status' />
