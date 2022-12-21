@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json.schemastore.org/swcrc",
+  "module": {
+    "type": "umd",
+    "globals": {
+      "SnapmanJs": "SnapmanJS"
+    }
+  },
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "decorators": true,
+      "dts": true,
+      "dynamicImport": true
+    },
+    "minify": {
+      "compress": true,
+      "mangle": true
+    },
+    "baseUrl": "."
+  },
+  "minify": true,
+  "sourceMaps": true
+}
