@@ -18,10 +18,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "coming"
+    "url": "git@github.com:TheMagicianDev/snapman.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheMagicianDev/snapman.js/issues"
   },
   "license": "MIT",
-  "author": "TheMagician <themagicianproject2022@gmail.com>, Mohamed Lamine Allal <allalmohamedlamine@gmail.com>",
+  "contributors": [
+    "Mohamed Lamine Allal <allalmohamedlamine@gmail.com>",
+    "TheMagicianProject <themagicianproject2022@gmail.com>"
+  ],
   "type": "module",
   "exports": {
     ".": {
