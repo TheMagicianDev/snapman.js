@@ -37,11 +37,13 @@
   },
   "main": "dist/cjs/index.js",
   "files": [
-    "dist"
+    "dist/esm",
+    "dist/cjs",
+    "dist/bundle"
   ],
   "scripts": {
     "prepare": "lefthook install",
-    "build": "npm-run-all lint --parallel build:* --serial ts:dts:*",
+    "build": "npm-run-all lint --parallel build:* --serial ts:dts:* zip:**",
     "notLint:build": "npm-run-all --parallel build:* --serial ts:dts:*",
     "jsOnly:build": "npm-run-all --parallel build:*",
     "build:bundle": "webpack --config webpack.config.cjs",
@@ -51,6 +53,8 @@
     "ts:dts:cjs": "tsc --emitDeclarationOnly --outDir dist/cjs",
     "ts:dts:esm": "tsc --emitDeclarationOnly --outDir dist/esm",
     "ts:typeCheck": "tsc --noEmit",
+    "zip:esm": "bestzip dist/esm.zip dist/esm",
+    "zip:cjs": "bestzip dist/cjs.zip dist/cjs",
     "lint": "npm-run-all --parallel ts:typeCheck lint:*",
     "lint:eslint": "eslint src/**/*.ts",
     "commitlint": "commitlint --edit",
@@ -72,6 +76,7 @@
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
+    "bestzip": "^2.2.1",
     "eslint": "^8.30.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",

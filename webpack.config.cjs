@@ -5,7 +5,7 @@ const p = (pth) => path.resolve(__dirname, pth);
 module.exports = {
   entry: './src/index.ts',
   output: {
-    filename: 'index.js',
+    filename: 'index.umd.js',
     path: path.resolve(__dirname, 'dist/bundle'),
     library: 'SnapmanJs',
   },
