@@ -34,6 +34,7 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "lefthook install",
     "build": "npm-run-all lint --parallel build:* --serial ts:dts:*",
     "notLint:build": "npm-run-all --parallel build:* --serial ts:dts:*",
     "jsOnly:build": "npm-run-all --parallel build:*",
@@ -45,6 +46,7 @@
     "ts:typeCheck": "tsc --noEmit",
     "lint": "npm-run-all --parallel ts:typeCheck lint:*",
     "lint:eslint": "eslint src/**/*.ts",
+    "commitlint": "commitlint --edit",
     "test": "jest test",
     "test:cov": "jest test --coverage"
   },
@@ -59,6 +61,7 @@
     "@themagician/tsconfig-base": "^1.0.6",
     "@types/eslint": "^8.4.10",
     "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
     "eslint": "^8.30.0",

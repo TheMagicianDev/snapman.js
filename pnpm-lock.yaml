@@ -12,6 +12,7 @@ specifiers:
   '@types/eslint': ^8.4.10
   '@types/jest': ^29.2.4
   '@types/lodash.clonedeep': ^4.5.7
+  '@types/node': ^18.11.17
   '@typescript-eslint/eslint-plugin': ^5.46.1
   '@typescript-eslint/parser': ^5.46.1
   eslint: ^8.30.0
@@ -47,6 +48,7 @@ devDependencies:
   '@themagician/tsconfig-base': 1.0.6
   '@types/eslint': 8.4.10
   '@types/jest': 29.2.4
+  '@types/node': 18.11.17
   '@typescript-eslint/eslint-plugin': 5.46.1_mqzxmroayievgzgel6yrqgih5i
   '@typescript-eslint/parser': 5.46.1_lzzuuodtsqwxnvqeq4g4likcqa
   eslint: 8.30.0
