@@ -1,6 +1,6 @@
 # snapman
 
-![babel plugin module resolver tsconfig automatic alias banner](./imgs/snapman_banner.jpg)
+![snapmanJs_banner](./imgs/snapman_banner.jpg)
 
 <div align="center">
   <a href="https://www.npmjs.org/package/snapman">
@@ -111,7 +111,7 @@ const nextSnap = snap.next() // access the next snap in the timeline
 const prevSnap = snap.previous() // access the previous snap in the timeline
 ```
 
-### Snap object and accessing values
+### `Snap` object and accessing values
 
 ```ts
   const snap = s.getSnapAtIndex(3);
@@ -240,17 +240,17 @@ test('previous(), next() navigation', () => {
 });
 ```
 
-## Usage in real tests with experience first tests after pattern
+## Usage in real tests with "experience first, tests after" pattern
 
 If you have something that works through time. Like for instance a client. ...
 
-If you do e2e testing like testing something like laravel-mix or laravel-mix-glob or webpack ... Something cli based. You account for output ...
+If you do `e2e` testing like testing something like `laravel-mix` or `laravel-mix-glob` or `webpack` ... Something `cli` based. You account for output ...
 
-A great pattern is to create experiments and run all at first. Then you store on different important points events. And then you run the test all by consuming the collected data. Kind like with event sourcing.
+**A great pattern is to create experiments and run them all at first. While at it, you collect all sort of relevant events and there data. And then we write the test by consuming and testing against the experiments collected data. Kind like with event sourcing.**
 
-snapman was created to help with that process. Taking snapshot. Automatically the values are deeply cloned. And a timeline is created and managed. You can access any snapshot. And you can navigate the timeline and in different ways. And you can too search as well. 
+`Snapman` was created to help with that process. Taking snapshot. Automatically the values are deeply cloned. And a timeline is created and managed. You can access any snapshot. And you can navigate the timeline and in different ways. And you can too search as well. 
 
-And by using the right ids structure. You can also categories events that are alike. And group them.
+And by using the right ids structure. You can also categorize events that are alike. And group them.
 
 ```ts
 id = `category1:sub2:someEvent1`
