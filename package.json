@@ -1,6 +1,6 @@
 {
   "name": "snapman",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Snapshots manager for taking snapshots where the values are automatically deep cloned when taken. Track timeline. And can be used as events source. Navigate snapshots and there timeline. Can be used for testing and any other application.",
   "keywords": [
     "snapman",
