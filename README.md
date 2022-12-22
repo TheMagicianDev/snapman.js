@@ -37,7 +37,19 @@ pnpm add snapman
 pnpm add snapman
 ```
 
-For usage with browser you can use bundlers like webpack or vite or rollup. Otherwise you can use the following [umd file]()
+For usage with browser you can use bundlers like webpack or vite or rollup.
+
+Otherwise you can use the CDN link:
+
+Latest version
+
+https://unpkg.com/snapman
+
+Specific:
+
+https://unpkg.com/browse/snapman@1.0.6/
+
+And also you can use the already bundled umd `index.umd.js` file in [releases](https://github.com/TheMagicianDev/snapman.js/releases).
 
 ## Usage
 

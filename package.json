@@ -41,6 +41,7 @@
     "dist/cjs",
     "dist/bundle"
   ],
+  "unpkg": "dist/bundle/index.umd.js",
   "scripts": {
     "prepare": "lefthook install",
     "build": "npm-run-all lint --parallel build:* --serial ts:dts:* zip:**",
