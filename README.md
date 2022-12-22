@@ -51,7 +51,7 @@ Otherwise you can use the CDN link:
 
 And also you can use the already bundled umd `index.umd.js` file in [releases](https://github.com/TheMagicianDev/snapman.js/releases).
 
-The library is exposed at `SnapmanJs`
+The library is exposed as `SnapmanJs`
 
 ```js
 const sm = new SnapmanJs.Snapman();
