@@ -41,15 +41,21 @@ For usage with browser you can use bundlers like webpack or vite or rollup.
 
 Otherwise you can use the CDN link:
 
-```sh
-# Latest version
-https://unpkg.com/snapman
+```html
+<!-- Latest version -->
+<script src="https://unpkg.com/snapman"></script>
 
-# Specific:
-https://unpkg.com/snapman@1.0.6
+<!-- Specific: -->
+<script src="https://unpkg.com/snapman@1.0.6"></script>
 ```
+
 And also you can use the already bundled umd `index.umd.js` file in [releases](https://github.com/TheMagicianDev/snapman.js/releases).
 
+The library is exposed at `SnapmanJs`
+
+```js
+const sm = new SnapmanJs.Snapman();
+```
 ## Usage
 
 ### Construction
