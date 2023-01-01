@@ -1,4 +1,9 @@
 import { Snap } from '/Snap/index.js';
+import { last } from '/Utils/helpers.js';
+
+interface ISnapData {
+  snaps: Snap[];
+}
 
 /**
  * Snap manager
@@ -10,7 +15,7 @@ import { Snap } from '/Snap/index.js';
 export class Snapman<TMapDef extends Record<string, any> = any> {
   private _snapsTimeLine: Snap[] = [];
 
-  private _snapsMap: Map<string, Snap> = new Map();
+  private _snapsMap: Map<string, ISnapData> = new Map();
 
   /**
    * Create a snapshot with id
@@ -22,19 +27,36 @@ export class Snapman<TMapDef extends Record<string, any> = any> {
    * @returns this
    */
   public snap<TId extends string>(id: string, val?: TMapDef[TId]): this {
-    const snap = new Snap({
-      id,
-      timelineIndex: this._snapsTimeLine.length,
-      val,
-      snapman: this,
-    });
-    this._snapsMap.set(id, snap);
-    this._snapsTimeLine.push(snap);
+    const snapData = this._snapsMap.get(id);
+
+    const _addSnapToMapAndTimeLine = (snapId: string) => {
+      const snap = new Snap({
+        id: snapId,
+        timelineIndex: this._snapsTimeLine.length,
+        val,
+        snapman: this,
+      });
+      this._snapsMap.set(snapId, {
+        snaps: [snap],
+      });
+      this._snapsTimeLine.push(snap);
+      return snap;
+    };
+
+    if (snapData) {
+      const snapId = `${id}:${snapData.snaps.length + 1}`;
+      const snap = _addSnapToMapAndTimeLine(snapId);
+      snapData.snaps.push(snap);
+      return this;
+    }
+
+    _addSnapToMapAndTimeLine(id);
+
     return this;
   }
 
   /**
-   * Get a Snap by id
+   * Get a Snap by exact id
    * @param id snap id
    * @returns Snap object (
    *  Represent the Snap and have different helpers methods
@@ -42,13 +64,66 @@ export class Snapman<TMapDef extends Record<string, any> = any> {
    * )
    */
   public getSnap<TId extends string>(id: TId): Snap<TMapDef[TId]> {
-    const snap = this._snapsMap.get(id);
+    const snapData = this._snapsMap.get(id);
 
-    if (!snap) {
+    if (!snapData) {
       throw new Error(`No snap with id: ${id} exists!`);
     }
 
-    return snap;
+    return snapData.snaps[0];
+  }
+
+  /**
+   * This method allow you to retrieve the snapshots that were taken using exactly the same id.
+   * sm.snap("someId", {}) sm.snap("someId", {}) first one will go with `someId`,
+   * second will go with `someId:2`. Managed automatically.
+   * And so getting the multiple Snaps of same id that were automatically incrementally indexed
+   * some_id, some_id:2, some_id:3 ... When the snaps of same id were taken.
+   * @param id snaps type id
+   * @returns Array of Snap objects (
+   *  Represent the Snap and have different helpers methods
+   * and you can access value with Snap.getVal() or Snap.val()
+   * )
+   */
+  public getSnapsOfId<TId extends string>(id: TId): Snap<TMapDef[TId]>[] {
+    const snapData = this._snapsMap.get(id);
+
+    if (!snapData) {
+      throw new Error(`No snap with id: ${id} exists!`);
+    }
+
+    return snapData.snaps;
+  }
+
+  /**
+   * Get snaps matched by the query for a sub part of the id.
+   * Parts are determined by `:`.
+   * category1:sub2:some_some => if query = category1 that would be matched.
+   * If query = sub2 that wouldn't be matched.
+   * If query = category1:sub2 that would be matched. as it's a valid id part. Or categorization.
+   * If query = category => it wouldn't be matched. Because there is no id with
+   * `category` or `category:` categorization.
+   * Unlike the searchSnaps() function which lookup for a substring.
+   * This one match with the id parts `:`. Starting from the start. And not just a substring.
+   *
+   * The order would follow the one of the timeline.
+   *
+   * @param id snaps type id
+   * @returns Array of Snap objects (
+   *  Represent the Snap and have different helpers methods
+   * and you can access value with Snap.getVal() or Snap.val()
+   * )
+   */
+  public getSnaps(query: string): Snap[] {
+    const queryWithoutDelimiter =
+      last(query) === ':' ? query.slice(0, query.length - 1) : query;
+    const queryWithDelimiter = `${queryWithoutDelimiter}:`;
+
+    return this._snapsTimeLine.filter(
+      (snap) =>
+        snap.id() === queryWithoutDelimiter ||
+        snap.id().indexOf(queryWithDelimiter) === 0,
+    );
   }
 
   /**
